@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+<h1>Product List</h1>
+<div class="add-product-container">
+    <a href="{% url 'myapp:add_product' %}" class="btn-primary">Add New Product</a>
+</div>
+<form method="get" class="search-form">
+    <input type="text" id="searchInput" name="q" value="{{ query }}" placeholder="Введите один или несколько через пробел" />
+    <button type="submit">Search</button>
+</form>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1{% if query %}&q={{ query }}{% endif %}">First</a>
+            <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}">Last</a>
+        {% endif %}
+    </span>
+</div>
+<!-- Контейнер для динамически обновляемых результатов -->
+<div id="searchResults"></div>
+
+<!-- Таблица с результатами -->
+<table>
+    <thead>
+        <tr>
+            <th>Номер</th>
+            <th>Артикул</th>
+            <th>Наименование (RU)</th>
+            <th>Наименование (EN)</th>
+            <th>Наименование (DE)</th>
+            <th>HS</th>
+            <th>Описание</th>
+            <th>Вес нетто</th>
+            <th>Image 1</th>
+            <th>Image 2</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in page_obj %}
+        <tr>
+            <td>{{ product.number }}</td>
+            <td>{{ product.артикул }}</td>
+            <td>{{ product.наименование_ru }}</td>
+            <td>{{ product.наименование_en }}</td>
+            <td>{{ product.наименование_de }}</td>
+            <td>{{ product.hs }}</td>
+            <td>{{ product.описаине }}</td>
+            <td>{{ product.вес_нетто }}</td>
+            <!-- Display images -->
+            <td>
+                {% if product.image1 %}
+                    <a href="{{ product.image1 }}" target="_blank">
+                        <img src="{{ product.image1 }}" alt="Image 1" class="table-image">
+                    </a>
+                {% else %}
+                    No image
+                {% endif %}
+            </td>
+            <td>
+                {% if product.image2 %}
+                    <a href="{{ product.image2 }}" target="_blank">
+                        <img src="{{ product.image2 }}" alt="Image 2" class="table-image">
+                    </a>
+                {% else %}
+                    No image
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'myapp:edit_product' product.pk %}" class="edit-icon">
+                    📝
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="11">No products found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<!-- Навигация по страницам -->
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1{% if query %}&q={{ query }}{% endif %}">First</a>
+            <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}">Last</a>
+        {% endif %}
+    </span>
+</div>
+
+<!-- Скрипт загружается правильно, так как {% load static %} уже загружен в base.html -->
+<script src="{% static 'myapp/live_search.js' %}"></script>
+
+{% endblock %}

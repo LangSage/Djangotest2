@@ -1,0 +1,474 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Переменные для тем */
+:root {
+    --bg-color-light: #f5f5f5;
+    --text-color-light: #333;
+    --form-bg-light: #ffffff;
+
+    --bg-color-dark: #2c2c2c;
+    --text-color-dark: #ccc;
+    --form-bg-dark: #3c3c3c;
+
+    --header-bg-color: #4CAF50; /* Цвет заголовка */
+    --header-text-color: white; /* Цвет текста заголовка */
+}
+
+/* Темная тема */
+body.dark-mode {
+    --bg-color: var(--bg-color-dark);
+    --text-color: var(--text-color-dark);
+    --form-bg: var(--form-bg-dark);
+    --header-bg-color: #555; /* Цвет заголовка в темной теме */
+    --header-text-color: #ddd; /* Цвет текста заголовка в темной теме */
+}
+
+/* Светлая тема */
+body.light-mode {
+    --bg-color: var(--bg-color-light);
+    --text-color: var(--text-color-light);
+    --form-bg: var(--form-bg-light);
+}
+
+/* Стили для заголовка */
+h1 {
+    font-size: 24px;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--header-bg-color);
+    color: var(--header-text-color);
+    margin: 0;
+    border-bottom: 2px solid #333;
+}
+
+/* Стили для формы */
+.form-style {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: var(--form-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.form-table th, .form-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.form-table input[type="text"], .form-table textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Стили для формы поиска */
+.search-form {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.search-form input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s;
+}
+
+.search-form button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #45a049;
+}
+/* Общие стили для заголовка */
+header {
+    background-color: #4CAF50; /* Зеленый фон */
+    color: white; /* Белый текст */
+    padding: 10px 20px; /* Отступы */
+    display: flex; /* Располагает элементы в строку */
+    justify-content: space-between; /* Располагает элементы по краям */
+    align-items: center; /* Выравнивание элементов по центру вертикально */
+}
+
+header nav {
+    display: flex;
+    gap: 15px; /* Отступ между элементами навигации */
+}
+
+header a {
+    color: white; /* Белый цвет ссылок */
+    text-decoration: none; /* Убирает подчеркивание */
+}
+
+header a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* Для кнопки переключения темы */
+#theme-toggle {
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Без границы */
+    color: white; /* Белый цвет текста */
+    font-size: 24px; /* Размер шрифта */
+    cursor: pointer; /* Указатель курсора при наведении */
+    transition: color 0.3s; /* Плавное изменение цвета */
+}
+
+#theme-toggle:hover {
+    color: #ddd; /* Цвет при наведении */
+}
+
+
+/* Стили для таблицы */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+td {
+    background-color: #fff;
+}
+
+
+/* Общие стили для формы редактирования и добавления продукта */
+.form-style {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: var(--form-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для таблицы в форме */
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.form-table th {
+    text-align: left;
+    padding: 12px;
+    background-color: #f5f5f5; /* Светлый фон для заголовков */
+}
+
+.form-table td {
+    padding: 12px;
+}
+
+.form-table input[type="text"], .form-table textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.form-table label {
+    font-weight: bold;
+}
+
+/* Кнопка отправки */
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #45a049; /* Темнее зеленый при наведении */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Кнопка отмены */
+.btn-secondary {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6c757d; /* Серый цвет фона */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; /* Темнее серый при наведении */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Общие стили для заголовков на страницах формы */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* Стили для пагинации */
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination .step-links {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination .step-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.pagination .step-links a:hover {
+    background-color: #45a049;
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+.pagination .current {
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* Стили для кнопки переключения темы */
+/* Стили для кнопки переключения темы */
+#theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background-color: transparent; /* Прозрачный фон */
+    color: #4CAF50; /* Цвет текста (зеленый) */
+    border: 2px solid #4CAF50; /* Зеленая рамка */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+#theme-toggle:hover {
+    color: white; /* Белый цвет текста при наведении */
+    border-color: #45a049; /* Темнее зеленая рамка при наведении */
+    background-color: #4CAF50; /* Зеленый фон при наведении */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#theme-icon {
+    font-size: 20px; /* Размер иконки */
+}
+
+
+/* Темная тема */
+.dark-mode h1 {
+    background-color: #555;
+    color: #ddd;
+}
+
+.dark-mode th {
+    background-color: #555;
+    color: #ddd;
+}
+
+.dark-mode td {
+    background-color: #3c3c3c;
+}
+
+.dark-mode .search-form input[type="text"] {
+    border-color: #555;
+    background-color: #444;
+    color: #ccc;
+}
+
+.dark-mode .search-form button {
+    background-color: #777;
+}
+
+.dark-mode .pagination .step-links {
+    background-color: #555;
+    color: #ddd;
+}
+
+.dark-mode .pagination .step-links a {
+    color: #ddd;
+}
+
+.dark-mode .pagination .step-links a:hover {
+    background-color: #777;
+}
+
+/* Styles for images in the table */
+.table-image {
+    width: 150px; /* Fixed width for images */
+    height: 100px; /* Fixed height for images */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+    transition: transform 0.3s ease; /* Smooth transition for the scale effect */
+}
+
+.table-image:hover {
+    transform: scale(3.1); /* Slightly scale up the image on hover */
+}
+
+/* Responsive styles for images */
+@media (max-width: 768px) {
+    .table-image {
+        width: 100px; /* Smaller width for mobile devices */
+        height: 75px; /* Smaller height for mobile devices */
+    }
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+        padding: 15px;
+    }
+
+    .search-form input[type="text"] {
+        width: 90%;
+    }
+
+    table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .pagination .step-links {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .pagination .step-links a {
+        margin: 0 2px;
+        padding: 5px 8px;
+    }
+
+    .theme-toggle {
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .search-form input[type="text"] {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+
+    .pagination .step-links {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .pagination .step-links a {
+        margin: 0 1px;
+        padding: 4px 6px;
+    }
+
+    .theme-toggle {
+        font-size: 18px;
+    }
+}
+

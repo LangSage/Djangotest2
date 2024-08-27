@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if product %}
+        Edit Product
+    {% else %}
+        Add Product
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<h1>
+    {% if product %}
+        Edit Product
+    {% else %}
+        Add Product
+    {% endif %}
+</h1>
+
+<form method="post" class="form-style">
+    {% csrf_token %}
+    <table class="form-table">
+        <tr>
+            <th><label for="id_артикул">Артикул:</label></th>
+            <td>{{ form.артикул }}</td>
+        </tr>
+        <tr>
+            <th><label for="id_наименование_ru">Наименование (RU):</label></th>
+            <td>{{ form.наименование_ru }}</td>
+        </tr>
+        <tr>
+            <th><label for="id_наименование_en">Наименование (EN):</label></th>
+            <td>{{ form.наименование_en }}</td>
+        </tr>
+        <tr>
+            <th><label for="id_наименование_de">Наименование (DE):</label></th>
+            <td>{{ form.наименование_de }}</td>
+        </tr>
+        <tr>
+            <th><label for="id_hs">HS:</label></th>
+            <td>{{ form.hs }}</td>
+        </tr>
+        <tr>
+            <th><label for="id_описаине">Описание:</label></th>
+            <td>{{ form.описаине }}</td>
+        </tr>
+        <tr>
+            <th><label for="id_принадлежность">Принадлежность:</label></th>
+            <td>{{ form.принадлежность }}</td>
+        </tr>
+        <tr>
+            <th><label for="id_вес_нетто">Вес нетто:</label></th>
+            <td>{{ form.вес_нетто }}</td>
+        </tr>
+        <tr>
+            <th><label for="id_kz_v">KZ\\V:</label></th>
+            <td>{{ form.kz_v }}</td>
+        </tr>
+        <tr>
+            <th><label for="id_unnamed_9">Unnamed: 9:</label></th>
+            <td>{{ form.unnamed_9 }}</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn-primary">
+        {% if product %}
+            Update Product
+        {% else %}
+            Add Product
+        {% endif %}
+    </button>
+    <a href="{% url 'myapp:index' %}" class="btn-secondary">Cancel</a>
+</form>
+{% endblock %}

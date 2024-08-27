@@ -1,0 +1,51 @@
+<!-- myapp/templates/live_search_results.html -->
+<table>
+    <thead>
+        <tr>
+            <th>Артикул</th>
+            <th>Наименование (RU)</th>
+            <th>Наименование (EN)</th>
+            <th>Наименование (DE)</th>
+            <th>HS</th>
+            <th>Описание</th>
+            <th>Вес нетто</th>
+            <th>фото</th>
+            <th>фото</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in results %}
+        <tr>
+            <td>{{ product.артикул }}</td>
+            <td>{{ product.наименование_ru }}</td>
+            <td>{{ product.наименование_en }}</td>
+            <td>{{ product.наименование_de }}</td>
+            <td>{{ product.hs }}</td>
+            <td>{{ product.описаине }}</td>
+            <td>{{ product.вес_нетто }}</td>
+            <td>
+                {% if product.image1 %}
+                    <a href="{{ product.image1 }}" target="_blank">
+                        <img src="{{ product.image1 }}" alt="Image 1" class="table-image">
+                    </a>
+                {% else %}
+                    No image
+                {% endif %}
+            </td>
+            <td>
+                {% if product.image2 %}
+                    <a href="{{ product.image2 }}" target="_blank">
+                        <img src="{{ product.image2 }}" alt="Image 2" class="table-image">
+                    </a>
+                {% else %}
+                    No image
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="8">No matching products found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
